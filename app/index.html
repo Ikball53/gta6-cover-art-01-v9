@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Vice Coast Cover Studio — turn your photos into multi-panel cover art, offline in your browser.">
+<title>Vice Coast Cover Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-plate">VI</span>
+    <div>
+      <h1>Vice Coast Cover Studio</h1>
+      <p>Turn your photos into multi-panel cover art. Everything runs on your machine — photos never leave this page.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <label class="btn btn-primary" for="photo-input">Add photos</label>
+    <input id="photo-input" type="file" accept="image/*" multiple hidden>
+    <button id="sample-btn" class="btn" type="button">Use sample photos</button>
+    <button id="export-btn" class="btn btn-export" type="button">Export PNG</button>
+  </div>
+</header>
+
+<main class="workspace">
+  <section class="stage" aria-label="Cover preview">
+    <canvas id="cover-canvas" width="1080" height="1080"></canvas>
+    <p class="stage-hint">Click a panel to select it, then drag to reposition. Scroll on a panel to zoom.</p>
+  </section>
+
+  <aside class="panel" aria-label="Editor controls">
+    <div class="group">
+      <h2>Layout</h2>
+      <div class="chip-row" id="layout-row">
+        <button type="button" class="chip is-on" data-layout="classic">Classic grid</button>
+        <button type="button" class="chip" data-layout="hero">Hero + duo</button>
+        <button type="button" class="chip" data-layout="triptych">Triptych</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Post size</h2>
+      <div class="chip-row" id="size-row">
+        <button type="button" class="chip is-on" data-size="square">1080 × 1080</button>
+        <button type="button" class="chip" data-size="portrait">1080 × 1350</button>
+        <button type="button" class="chip" data-size="wide">1920 × 1080</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Colour grade</h2>
+      <div class="chip-row" id="grade-row">
+        <button type="button" class="chip is-on" data-grade="sunset">Vice sunset</button>
+        <button type="button" class="chip" data-grade="neon">Neon night</button>
+        <button type="button" class="chip" data-grade="clean">Clean</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Caption</h2>
+      <label class="field">Title
+        <input id="caption-title" type="text" maxlength="28" value="SUNSET HEIST">
+      </label>
+      <label class="field">Subtitle
+        <input id="caption-sub" type="text" maxlength="42" value="A VICE COAST STORY">
+      </label>
+      <label class="field">Plate
+        <input id="caption-plate" type="text" maxlength="4" value="VI">
+      </label>
+    </div>
+
+    <div class="group">
+      <h2>Selected panel</h2>
+      <label class="field">Zoom
+        <input id="panel-zoom" type="range" min="100" max="300" value="100">
+      </label>
+      <div class="chip-row">
+        <button id="panel-photo-btn" class="btn" type="button">Photo for this panel</button>
+        <input id="panel-photo-input" type="file" accept="image/*" hidden>
+        <button id="fill-all-btn" class="btn" type="button">Fill all panels</button>
+      </div>
+      <p id="panel-status" class="status">No photo yet — add photos or use the samples.</p>
+    </div>
+
+    <div class="group">
+      <h2>Finish</h2>
+      <p class="fineprint">Export writes a PNG at the post size above. Original artwork only: no game logos, characters or fonts are used.</p>
+    </div>
+  </aside>
+</main>
+
+<script src="src/panels.js"></script>
+<script src="src/studio.js"></script>
+</body>
+</html>

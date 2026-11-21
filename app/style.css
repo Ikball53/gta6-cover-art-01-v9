@@ -1,0 +1,145 @@
+/* Vice Coast Cover Studio — editor chrome.
+   Sunset palette: deep indigo page, coral + gold accents, clean cards. */
+
+:root {
+  --page: #141021;
+  --card: #1f1833;
+  --card-edge: #352a55;
+  --ink: #f5eefc;
+  --muted: #b9a8d9;
+  --coral: #ff6b5e;
+  --gold: #ffb84d;
+  --teal: #2fd4c4;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(160deg, #141021 0%, #241239 55%, #3a1440 100%);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--card-edge);
+}
+
+.brand { display: flex; gap: 14px; align-items: center; }
+.brand-plate {
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: 1px;
+  color: #1b1030;
+  background: linear-gradient(135deg, var(--gold), var(--coral));
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 18px rgba(255, 107, 94, 0.35);
+}
+.brand h1 { margin: 0; font-size: 22px; letter-spacing: 0.4px; }
+.brand p { margin: 4px 0 0; color: var(--muted); font-size: 13px; max-width: 520px; }
+
+.top-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--card-edge);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--teal); }
+.btn:focus-visible, .chip:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.btn-primary { background: linear-gradient(135deg, var(--teal), #1b9e94); color: #06231f; border: none; }
+.btn-export { background: linear-gradient(135deg, var(--gold), var(--coral)); color: #2a1206; border: none; }
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 20px;
+  padding: 20px 24px 28px;
+  align-items: start;
+}
+
+.stage {
+  background: rgba(20, 14, 38, 0.6);
+  border: 1px solid var(--card-edge);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+#cover-canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  cursor: grab;
+  touch-action: none;
+}
+#cover-canvas:active { cursor: grabbing; }
+.stage-hint { color: var(--muted); font-size: 13px; margin: 12px 0 2px; }
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--card-edge);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.panel h2 {
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--card-edge);
+  background: #2a1f47;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.chip.is-on { background: var(--coral); border-color: var(--coral); color: #fff5f2; }
+
+.field { display: block; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.field input[type="text"] {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding: 9px 11px;
+  border-radius: 9px;
+  border: 1px solid var(--card-edge);
+  background: #171129;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+.field input[type="range"] { width: 100%; margin-top: 8px; accent-color: var(--coral); }
+
+.status { font-size: 13px; color: var(--teal); margin: 10px 0 0; }
+.fineprint { font-size: 12px; color: var(--muted); line-height: 1.55; margin: 0; }
+
+@media (max-width: 900px) {
+  .workspace { grid-template-columns: 1fr; }
+}
